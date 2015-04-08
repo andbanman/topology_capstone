@@ -1,0 +1,144 @@
+import edu.stanford.math.plex4.api.Plex4;
+import edu.stanford.math.plex4.visualization.BarcodeVisualizer;
+import edu.stanford.math.plex4.examples.PointCloudExamples;
+import edu.stanford.math.plex4.homology.barcodes.BarcodeCollection;
+import edu.stanford.math.plex4.homology.chain_basis.Simplex;
+import edu.stanford.math.plex4.homology.interfaces.AbstractPersistenceAlgorithm;
+import edu.stanford.math.plex4.metric.impl.EuclideanMetricSpace;
+import edu.stanford.math.plex4.metric.landmark.LandmarkSelector;
+import edu.stanford.math.plex4.metric.landmark.MaxMinLandmarkSelector;
+import edu.stanford.math.plex4.streams.impl.LazyWitnessStream;
+import edu.stanford.math.plex4.streams.impl.VietorisRipsStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.io.File;
+import edu.stanford.math.plex4.homology.chain_basis.SimplexComparator;
+import edu.stanford.math.plex4.autogen.homology.BooleanAbsoluteHomology;
+import edu.stanford.math.plex4.homology.barcodes.AnnotatedBarcodeCollection;
+import edu.stanford.math.primitivelib.autogen.formal_sum.BooleanSparseFormalSum;
+
+public class WitnessComplexDemo {
+
+        public static void main(String[] args) {
+                
+	    //Read in data file generated in R
+		double[][] data = new double[199][5]; //table 198 x (LE, Inc, X, Y, Z) 
+		String file = "/home/andrew/Documents/Capstone/results/table_LifeExp_Income_Geo2";
+		BufferedReader br = null;
+		try {
+		    br = new BufferedReader(new FileReader(file));
+		    String line;
+		    int i = 0;
+		    while ((line = br.readLine()) != null) {
+			// process the line.
+			if (i != 0){ //so as to not read the column name line.
+			    String[] strArray = line.split(",");
+			    // index 0 - country num, index 1 - country name
+			    //Point cloud takes ints, so scale by 100 and convert
+			    data[i-1][0] =  Double.parseDouble(strArray[1]); //LE
+			    data[i-1][1] =  Double.parseDouble(strArray[2]); //Income
+			    data[i-1][2] =  Double.parseDouble(strArray[3]); //X
+			    data[i-1][3] =  Double.parseDouble(strArray[4]); //Y
+			    data[i-1][4] =  Double.parseDouble(strArray[5]); //Z
+			}
+			i++;   
+		    } 
+		} catch (IOException e){
+		    e.printStackTrace();
+		} finally {
+		    try {
+			if (br != null){ br.close();}
+		    } catch (IOException ex) {
+			ex.printStackTrace();
+		    }
+		}
+
+		EuclideanMetricSpace eda = new EuclideanMetricSpace(data);
+
+		
+		System.out.println(eda.size());
+		
+                //Now I've got my point cloud of data! Next, try to enter into a simplicial complex. 
+		//Then wh I run analysis I should be able to view constructors and cross reference
+		//with country code. 
+		
+		int maxDimension = 2;
+		int prime = 3;
+                int d = 2;
+                int numLandmarkPoints = 50;
+                double max_filtration_value = 1.0;
+               
+		//Create stream and calculate intervals. 
+		VietorisRipsStream<double[]> stream = 
+		    Plex4.createVietorisRipsStream(eda, maxDimension + 1, max_filtration_value);
+
+		//AbstractPersistenceAlgorithm<Simplex> persistence = 
+		//    Plex4.getModularSimplicialAlgorithm(maxDimension, prime);
+//TODO: should be computeAnnotatedIntervals ???
+		//BarcodeCollection<Double> intervals = persistence.computeIntervals(stream);
+		BooleanAbsoluteHomology<Simplex> persistenceAlgorithm = 
+		    new BooleanAbsoluteHomology<Simplex>(SimplexComparator.getInstance(),
+							 0, maxDimension + 1);
+		AnnotatedBarcodeCollection<Double,BooleanSparseFormalSum<Simplex>> intervals = 
+		    persistenceAlgorithm.computeAnnotatedIntervals(stream);
+		//Print out intervls and interval generators
+//TODO: generators are all null - investigate and try to pull out real generators. 
+                System.out.println(intervals);
+		//System.out.println("0dim gens: " + intervals.getGeneratorsAtDimension(0));
+		//System.out.println("1dim gens: " + intervals.getGeneratorsAtDimension(1));
+		//System.out.println("2dim gens: " + intervals.getGeneratorsAtDimension(2));
+
+
+		//Write barcodes to PNG images. 
+		BufferedImage bf = null;
+		try{
+		    File outputfile0;
+		    File outputfile1;
+		    File outputfile2;
+		    BarcodeVisualizer barcodes = new BarcodeVisualizer();
+
+//TODO: create persistence diagram in addtion to barcode diagrams. 
+		    bf = barcodes.drawBarcode(intervals.getIntervalsAtDimension(0), 
+					 "IncomeLifeExpXYZ-0", max_filtration_value);
+		    outputfile0 = new File("annotated-dim0.png");
+		    ImageIO.write(bf, "png", outputfile0);
+
+		    bf = barcodes.drawBarcode(intervals.getIntervalsAtDimension(1),     
+					 "IncomeLifeExpXYZ-1", max_filtration_value);
+		    outputfile1 = new File("annotated-dim1.png");
+		    ImageIO.write(bf, "png", outputfile1);
+
+		    bf = barcodes.drawBarcode(intervals.getIntervalsAtDimension(2), 
+					 "IncomeLifeExpXYZ-2", max_filtration_value);
+		    outputfile2 = new File("annotated-dim2.png");
+		    ImageIO.write(bf, "png", outputfile2);
+
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+        }
+}
+//stream = Plex4.createVietorisRipsStream(pointsComp, dims.maxDimension + 1, maxFiltrationValue, numDivisions);
+//fc = stream.getConverter();
+//BooleanAbsoluteHomology<Simplex> persistenceAlgorithm = new BooleanAbsoluteHomology<Simplex>(SimplexComparator.getInstance(), 0, dims.maxDimension + 1);
+//intervals = persistenceAlgorithm.computeAnnotatedIntervals(stream);
+//visibleGenerators.clear();
+//visibleGeneratorCoordinates.clear();
+//println(intervals);
+
+//CODE FOR LAZY WITNESS STREAM
+
+	//LandmarkSelector<double[]> landmarkSelector = 
+		//  new MaxMinLandmarkSelector<double[]>(eda, numLandmarkPoints); 
+		//LazyWitnessStream<double[]> stream =
+		//    new LazyWitnessStream<double[]>(eda, landmarkSelector, d + 1, maxDistance, 20);
+		//stream.finalizeStream();                
+                //System.out.println("Number of simpleces in complex: " + stream.getSize());               
+                //AbstractPersistenceAlgorithm<Simplex> algorithm = 
+		//    Plex4.getDefaultSimplicialAlgorithm(d + 1);
+		//BarcodeCollection<Double> intervals = algorithm.computeIntervals(stream);  

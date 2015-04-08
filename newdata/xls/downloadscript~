@@ -1,0 +1,10 @@
+#wget -O /home/omio/Desktop/ "http://thecanadiantestbox.x10.mx/CC.zip"
+
+#!/bin/bash
+filename='subset.text'
+echo Start
+while read p; do 
+    $name=1
+    wget -O /xls/$name $p
+    $name=$name+1
+done < $filename

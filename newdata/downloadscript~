@@ -1,0 +1,8 @@
+#wget  -O /home/omio/Desktop/ "http://thecanadiantestbox.x10.mx/CC.zip"
+
+#!/bin/bash
+filename='~/Documents/Capstone/newdata/gapminderDataLinks.text'
+echo Start
+while read p; do 
+    echo $p
+done < $filename

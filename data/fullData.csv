@@ -1,0 +1,28 @@
+AidReceived,FALSE,~/Documents/Capstone/data/Indicators/Aid_received.csv
+BirthByProS,TRUE,~/Documents/Capstone/data/Indicators/birth by pro staffs.csv
+PrimaryCompletion,TRUE,~/Documents/Capstone/data/Indicators/Completition rate total.csv
+EnerUsepPsn,TRUE,~/Documents/Capstone/data/Indicators/energy use per person.csv
+PrimaryExpd,TRUE,~/Documents/Capstone/data/Indicators/expenditure primary.csv
+SecndryExpd,TRUE,~/Documents/Capstone/data/Indicators/expenditure secondary.csv
+TertiryExpd,TRUE,~/Documents/Capstone/data/Indicators/expenditure tertiery.csv
+DebtExternl,FALSE,~/Documents/Capstone/data/Indicators/External debt.csv
+GPDpCapUSDl,TRUE,~/Documents/Capstone/data/Indicators/GDPpercapitaconstant2000US.csv
+MalnutLwWgt,FALSE,~/Documents/Capstone/data/Indicators/IFPRI Malnutrition (low weight for age).csv
+BMImaleIndc,FALSE,~/Documents/Capstone/data/Indicators/Indicator_BMI male ASM.csv
+InfanttMort,FALSE,~/Documents/Capstone/data/Indicators/indicator gapminder infant_mortality.csv
+GNItotalPPP,TRUE,~/Documents/Capstone/data/Indicators/indicatorGNItotalPPP.csv
+PplwithHIV,FALSE,~/Documents/Capstone/data/Indicators/indicator_hiv_plwha.csv
+HealthExpnd,TRUE,~/Documents/Capstone/data/Indicators/indicator_per capita total expenditure on health (ppp int. $).csv
+PovertyPPP,FALSE,~/Documents/Capstone/data/Indicators/Indicator_Poverty headcount ratio at $2 a day (PPP) (% of population).csv
+Ruralpovrty,FALSE,~/Documents/Capstone/data/Indicators/Indicator_Poverty headcount ratio at rural poverty line (% of rural population).csv
+TobaccoUse,FALSE,~/Documents/Capstone/data/Indicators/indicator_prevalence of current tobacco use among adults (%) both sexes.csv
+AdultLitrcy,TRUE,~/Documents/Capstone/data/Indicators/indicator SE_ADT_LITR_ZS.xls.csv
+GirltoBoysSecPrimEd,TRUE,~/Documents/Capstone/data/Indicators/indicator SE_ENR_PRSC_FM_ZS.xls.csv
+InequalityIndex,FALSE,~/Documents/Capstone/data/Indicators/indicator SI_POV_GINI.xls.csv
+HealthExpGDP,TRUE,~/Documents/Capstone/data/Indicators/indicator total health expenditure perc of GDP.csv
+UrbanPopulat,TRUE,~/Documents/Capstone/data/Indicators/indicator wdi urbanpopulation.csv
+MurderedMale,FAlSE,~/Documents/Capstone/data/Indicators/murdered female indicator file UL 20100916.csv
+MurderFemale,FALSE,~/Documents/Capstone/data/Indicators/murdered male indicator file UL 20100916.csv
+SuicideFmale,FALSE,~/Documents/Capstone/data/Indicators/Suicide female indicator file UL 20100916.csv
+SuicideMale,FALSE,~/Documents/Capstone/data/Indicators/Suicide male indicator file UL 20100916.csv
+MaternalMort,FALSE,~/Documents/Capstone/data/Indicators/WHO_jb_MaternalMortalityRatio1990_2010.csv

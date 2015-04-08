@@ -1,0 +1,8 @@
+#wget -O /home/omio/Desktop/ "http://thecanadiantestbox.x10.mx/CC.zip"
+
+#!/bin/bash
+filename='gapminderDataLinks.text'
+echo Start
+while read p; do 
+    wget $p
+done < $filename

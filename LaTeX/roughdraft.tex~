@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,graphicx}
+\usepackage{amssymb,amsthm,bm,url,paralist,tabls,hyperref,amscd}
+
+
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{rem}[equation]{Remark}
+\newtheorem{examp}[equation]{Example}
+\newtheorem{defn} [equation]{Definition}
+\theoremstyle{remark}	  \newtheorem*{remark}{Remark}
+
+
+
+\numberwithin{equation}{section}
+\usepackage{varioref}
+\labelformat{section}{Section~#1}
+\labelformat{subsection}{Section~#1}
+\labelformat{subsubsection}{Section~#1}
+\labelformat{figure}{Figure~#1}
+\labelformat{table}{Table~#1}
+\labelformat{defin}{Definition~#1}
+\usepackage[letterpaper,margin=1in]{geometry}
+
+\title{The Topology of our World}
+\author{Andrew Banman \\  Department of Mathematics, Statistics, and Computer Science \\  Macalester College \\   St. Paul, MN 55105}
+
+
+
+
+\date{December 4, 2015}
+
+\begin{document}
+
+
+
+
+\maketitle
+\begin{abstract}
+\noindent
+Analayze the question of whether or not the countries of the world are even divided into first and third world categories. Use techniques of persistent homology to look for topological basis for this notion. Data drawn from GapMinder project, collection of indicators spanning many aspects of life and nation. Data collected and pre-processed in R. Topology analyzed with the pHom package of R. 
+\end{abstract}
+
+
+\section{Introduction}
+
+Introduce the problem at hand. Gapminder is a project founded by SOANDSO with the goal of dispelling the pervasive idea that the world is neatly organized into a rich, western style group known as the 1st world and a poor or less-developed group known as the 3rd world. Whatever happened to the 2nd? SOANDSO refutes this notion by presenting a series of compelling cases, such as GDP vs life expectancy to reveal that this dichotomy does not hold true.\cite{gapminder} The topology of this data can also provide insight into this question, specifically through the application of persistent homology techniques. Most obviosly, the persistent homology tells us how many connected components exist in the data, which correspond to groups of countries distinct in certain measurable qualities, e.g. 1st, 2nd, or 3rd `worlds.' 
+
+\section{Persistent Homology}
+
+A summary of persistent homology using key sources and some examples. \cite{carlsson}, \cite{ghrist}.
+
+
+
+%\begin{figure}[h]
+%$$
+%\includegraphics[width=4in]{SeifertSurface.pdf} 
+% $$
+%\caption{The Seifert Circles for the Trefoil Knot}
+%\end{figure}
+
+
+\section{Preparing Data}
+
+For the final results to carry any water significant efforts must be made to gather and convert data with upmost care. The goal is to collect data on countries from across multiple indicators so that each country is represented by a point in $R^N$ space, where $N$ is the number of indicators in use. Some critical questions that must be answered along the way are what year to take data from? which indicators are important to the central question? and what can (or should) be done about holes in the data? Below I present one such algorithm.
+\begin{itemize}
+\item The most recent data foreach country from a given indicator is gathered into a vector $v_i$, where $i$ represents the indicator in question.
+\item Then the entries of $v_i$ are normalized by linear transformation to fall on the range $[0,1]$, where 0 represents a bad result and 1 represents a good result. This step is vital in order to compare indicators with scales that differ by many orders of magnitude.
+\item The set of vectors $V = \set{v_i}_{i=0}^N$ are  collected into a data matrix $D = [v_1 \cdots v_N]$ using the Join function by country. 
+\item The data is preened so that indicators with less than some fraction $f$ of complete data are excluded. Similarly, cases with little data are then removed from $D$. 
+\item The $D$ will still contain some holes, so by compromise they are filled in with the indicator average or the country average.
+\end{itemize}
+After all these steps are completed we have a data matrix $D$, representing the point cloud of countries in our high-dimensional space of indicators. of which we can analyze the topology
+
+
+\section{Homology of the World}
+
+Here is where I will present the homology of the final data set(s), and discuss their meanings.
+
+\section{Further Work}
+
+Different algorithms for preparing the data - more fidelity, less guessing. etc.
+\begin{itemize}
+\item Add geographic info - e.g. lat and long for each country
+\item Set up multiple Topological studies of progressively larger data sets. Starting with just the geographic, and slowly adding indicators, starting with those that seem most important AND have the most available data. 
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{carlsson}
+ Gunnar Carlsson, “Topology and Data,” \emph{Bulletin of the American Mathematical Society} 46, no. 2 (2009): 255–308.
+
+\bibitem{ghrist}
+ Robert Ghrist, “Barcodes: The Persistent Topology of Data,” \emph{Bulletin of the American Mathematical Society} 45, no. 1 (2008): 61.
+
+\bibitem{comptop}
+Edelsbrunner, Herbert, and J. Harer. \emph{Computational Topology: An Introduction}. Providence, RI: American Mathematical Society, 2010. Print. 
+
+\bibitem{gapminder}
+ Gapminder website, data files. 
+
+\end{thebibliography}
+\end{document}
+
+

@@ -1,0 +1,3 @@
+Indicator, Quality(TRUE=good), URL
+Age1stMarriageWomen, TRUE, http://spreadsheets.google.com/pub?key=t4eF8H_jq_xyKCUHAX6VT1g&output=csv,
+Age15UpEmplymentRate, TRUE, http://spreadsheets.google.com/pub?key=rV0ksExNqh6V_h40f0_nFjg&output=csv,

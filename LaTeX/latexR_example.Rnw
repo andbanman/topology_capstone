@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+
+Here are the steps to compiling a latex document with R code:
+\begin{itemize}
+\item Use .Rnw (R no web) file extension \\
+\item To make a chunk, type \<< options  \>> chunk code @ \\
+\item In an R console, use knit(example.Rnw) to compile. This produces example.tex, ready to be compilled by latex. 
+\end{itemize}
+
+Here should be a bit of R code:
+This is a chunck of R with no option
+
+<<>>=
+# Need to use R syntax for comments.
+1+2
+@ 
+This is a chunck of R that will not evaluate the input
+
+<<eval=FALSE>>=
+1+2
+@ 
+
+This an chunck of R that won't show the input
+
+<<echo=FALSE>>=
+1+2
+@ 
+
+
+
+\end{document}

@@ -1,0 +1,28 @@
+AidReceived,FALSE,~/Documents/Capstone/data/Aid_received.csv
+BirthByProS,TRUE,~/Documents/Capstone/data/birth by pro staffs.csv
+PrimaryCompletion,TRUE,~/Documents/Capstone/data/Completition rate total.csv
+EnerUsepPsn,TRUE,~/Documents/Capstone/data/energy use per person.csv
+PrimaryExpd,TRUE,~/Documents/Capstone/data/expenditure primary.csv
+SecndryExpd,TRUE,~/Documents/Capstone/data/expenditure secondary.csv
+TertiryExpd,TRUE,~/Documents/Capstone/data/expenditure tertiery.csv
+DebtExternl,FALSE,~/Documents/Capstone/data/External debt.csv
+GPDpCapUSDl,TRUE,~/Documents/Capstone/data/GDPpercapitaconstant2000US.csv
+MalnutLwWgt,FALSE,~/Documents/Capstone/data/IFPRI Malnutrition (low weight for age).csv
+BMImaleIndc,FALSE,~/Documents/Capstone/data/Indicator_BMI male ASM.csv
+InfanttMort,FALSE,~/Documents/Capstone/data/indicator gapminder infant_mortality.csv
+GNItotalPPP,TRUE,~/Documents/Capstone/data/indicatorGNItotalPPP.csv
+PplwithHIV,FALSE,~/Documents/Capstone/data/indicator_hiv_plwha.csv
+HealthExpnd,TRUE,~/Documents/Capstone/data/indicator_per capita total expenditure on health (ppp int. $).csv
+PovertyPPP,FALSE,~/Documents/Capstone/data/Indicator_Poverty headcount ratio at $2 a day (PPP) (% of population).csv
+Ruralpovrty,FALSE,~/Documents/Capstone/data/Indicator_Poverty headcount ratio at rural poverty line (% of rural population).csv
+TobaccoUse,FALSE,~/Documents/Capstone/data/indicator_prevalence of current tobacco use among adults (%) both sexes.csv
+AdultLitrcy,TRUE,~/Documents/Capstone/data/indicator SE_ADT_LITR_ZS.xls.csv
+GirltoBoysSecPrimEd,TRUE,~/Documents/Capstone/data/indicator SE_ENR_PRSC_FM_ZS.xls.csv
+InequalityIndex,FALSE,~/Documents/Capstone/data/indicator SI_POV_GINI.xls.csv
+HealthExpGDP,TRUE,~/Documents/Capstone/data/indicator total health expenditure perc of GDP.csv
+UrbanPopulat,TRUE,~/Documents/Capstone/data/indicator wdi urbanpopulation.csv
+MurderedMale,FAlSE,~/Documents/Capstone/data/murdered female indicator file UL 20100916.csv
+MurderFemale,FALSE,~/Documents/Capstone/data/murdered male indicator file UL 20100916.csv
+SuicideFmale,FALSE,~/Documents/Capstone/data/Suicide female indicator file UL 20100916.csv
+SuicideMale,FALSE,~/Documents/Capstone/data/Suicide male indicator file UL 20100916.csv
+MaternalMort,FALSE,~/Documents/Capstone/data/WHO_jb_MaternalMortalityRatio1990_2010.csv

@@ -1,0 +1,7 @@
+IncomeperPrsn,TRUE,~/Documents/Capstone/data/Indicators/indicator gapminder gdp_per_capita_ppp.csv
+AidReceived,FALSE,~/Documents/Capstone/data/Indicators/Aid_received.csv
+AidGiven,TRUE,~/Documents/Capstone/data/Indicators/indicator_total allocable aid (2007 us$).csv
+InfantMortality,FALSE,~/Documents/Capstone/data/Indicators/indicator gapminder infant_mortality.csv
+LifeExpect,TRUE,~/Documents/Capstone/data/Indicators/indicator life_expectancy_at_birth.csv
+TotalFertility,FALSE,~/Documents/Capstone/data/Indicators/indicator undata total_fertility.csv
+
