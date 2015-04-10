@@ -32,8 +32,9 @@ scaleData <- function(data,  quality = TRUE, saturation_level=0){
     mean <- mean(data, na.rm=TRUE)
     stdev <- sd(data, na.rm=TRUE)
     if (saturation_level > 0){
-        data[data >= mean+stdev*saturation_level] <- mean + stdev*saturation_level
-        data[data <= mean-stdev*saturation_level] <- mean - stdev*saturation_level
+        throw out outliers
+        data[data >= mean+stdev*saturation_level] <- NA #mean + stdev*saturation_level
+        data[data <= mean-stdev*saturation_level] <- NA #mean - stdev*saturation_level
     }
     minimum <- min(data, na.rm=TRUE)
     maximum <- max(data, na.rm=TRUE)
